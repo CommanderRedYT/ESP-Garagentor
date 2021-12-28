@@ -108,8 +108,8 @@ unsigned long NTPClient::getEpochTime() {
 }
 
 uint64_t NTPClient::getBetterEpochTime() { // return the epoch time in milliseconds
-  return this->_timeOffset * 1000 + // User offset
-         this->_currentEpoc * 1000 + // Epoc returned by the NTP server
+  return this->_timeOffset * uint64_t{1000} + // User offset
+         this->_currentEpoc * uint64_t{1000} + // Epoc returned by the NTP server
          ((millis() - this->_lastUpdate)); // Time since last update
 }
 

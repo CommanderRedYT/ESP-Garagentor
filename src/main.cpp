@@ -7,7 +7,7 @@
 #include <WiFi.h>
 #include <WiFiUdp.h>
 
-// #include <analogWrite.h>
+#include <analogWrite.h>
 
 #define PIN_R 19
 #define PIN_G 18
@@ -50,9 +50,9 @@ void on_receive(const uint8_t *mac, const uint8_t *data, int len) {
 
   if (msg_type == "BOBBYOPEN") {
     Serial.println("Bob is opening the door");
-    // analogWrite(PIN_R, 0, 1023);
-    // analogWrite(PIN_G, 255, 1023);
-    // analogWrite(PIN_B, 0, 1023);
+    digitalWrite(PIN_R, HIGH);
+    digitalWrite(PIN_G, LOW);
+    digitalWrite(PIN_B, LOW);
 
     ledtimer = millis();
   }
@@ -67,9 +67,9 @@ void setup() {
   pinMode(PIN_G, OUTPUT);
   pinMode(PIN_B, OUTPUT);
 
-  // analogWrite(PIN_R, 200, 1023);
-  // analogWrite(PIN_G, 200, 1023);
-  // analogWrite(PIN_B, 200, 1023);
+  digitalWrite(PIN_R, HIGH);
+  digitalWrite(PIN_G, HIGH);
+  digitalWrite(PIN_B, HIGH);
 
   // Set hostname
   WiFi.hostname("ESP32-Garagentor");
